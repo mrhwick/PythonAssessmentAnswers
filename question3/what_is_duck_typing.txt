@@ -1,0 +1,28 @@
+Duck typing is a kind of variable typing which follows the old adage "if it looks like a duck and quacks like a duck, then it's a duck".
+What this means in practice is that a language which uses duck typing does not enforce the strong typing requirements.
+Rather than enforcing a variable type prior to runtime, a duck-typed language enforces variable type when the variable is used in some way.
+For example, two classes may be defined like so:
+
+
+			class Duck(object):
+				
+				def quacking(self):
+					print "I'm quacking"
+			
+			class Not_A_Duck(object):
+			
+				def quacking(self):
+					print "I'm busy with other non-duck things"
+					
+				def doing_other_things_too(self):
+					print "You've found my real purpose"
+
+
+If we then create a function that expects to take a Duck object as an argument so that it can use the quacking method from that object, the function doesn't actually check to ensure that we have given it an object of type Duck.
+Instead, the function would simply attempt to call the quacking method on whatever object is given to it.
+So, any object that allows another routine to use the quacking method from it is considered a viable Duck object.
+
+If the method did not exist, we will see a runtime exception.
+If the method does exist, the function treats the object in the same way it treats all other objects that have the methods it expects.
+
+** To see an executable example, please refer to example.py in the same package as this text file. **
